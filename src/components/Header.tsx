@@ -2,7 +2,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 import { cn } from "@/lib/utils";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import { Scale, Menu, X } from "lucide-react";
+import { Scale, Menu } from "lucide-react";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -18,43 +18,45 @@ export const Header = () => {
   };
 
   const MenuItems = () => (
-    <>
-      <NavigationMenuItem>
-        <Link to="/">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-            Home
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <Link to="/sobre-nos">
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-            Sobre Nós
-          </NavigationMenuLink>
-        </Link>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <button onClick={() => scrollToSection('servicos')}>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-            Serviços
-          </NavigationMenuLink>
-        </button>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <button onClick={() => scrollToSection('faq')}>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-            FAQ
-          </NavigationMenuLink>
-        </button>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <button onClick={() => scrollToSection('contato')}>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-            Contato
-          </NavigationMenuLink>
-        </button>
-      </NavigationMenuItem>
-    </>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <Link to="/">
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/sobre-nos">
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+              Sobre Nós
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <button onClick={() => scrollToSection('servicos')}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+              Serviços
+            </NavigationMenuLink>
+          </button>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <button onClick={() => scrollToSection('faq')}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+              FAQ
+            </NavigationMenuLink>
+          </button>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <button onClick={() => scrollToSection('contato')}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+              Contato
+            </NavigationMenuLink>
+          </button>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 
   return (
@@ -68,16 +70,12 @@ export const Header = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <MenuItems />
-              </NavigationMenuList>
-            </NavigationMenu>
+            <MenuItems />
           </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button className="p-2">
                   <Menu className="h-6 w-6" />
