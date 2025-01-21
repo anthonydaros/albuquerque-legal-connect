@@ -3,60 +3,74 @@ import { Shield, Calculator, FileText, Users, Scale, BookOpen } from "lucide-rea
 const services = [
   {
     icon: Shield,
-    title: "Consultoria Jurídica",
-    description: "Orientação especializada em direito previdenciário",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+    title: "Consultoria Jurídica Previdenciária",
+    description: "Atendimento personalizado com profissionais experientes para solucionar problemas previdenciários.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
   },
   {
     icon: Calculator,
-    title: "Cálculos e Revisões",
-    description: "Análise detalhada de benefícios e contribuições",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+    title: "Planejamento Previdenciário",
+    description: "Análise detalhada do histórico e estratégias para maximizar benefícios.",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf"
   },
   {
     icon: FileText,
-    title: "Requerimentos INSS",
-    description: "Auxílio completo em processos administrativos",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+    title: "Cálculos Previdenciários",
+    description: "Cálculos precisos e identificação de possíveis erros no INSS.",
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490"
   },
   {
     icon: Users,
-    title: "Planejamento Previdenciário",
-    description: "Estratégias para aposentadoria e benefícios",
+    title: "Regularização de Contribuições",
+    description: "Assessoria completa para regularização de períodos em atraso.",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a"
   },
   {
     icon: Scale,
-    title: "Processos Judiciais",
-    description: "Representação legal especializada",
+    title: "Ações Judiciais",
+    description: "Representação legal especializada em disputas com o INSS.",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216"
   },
   {
     icon: BookOpen,
-    title: "Regularização de INSS",
-    description: "Normalização de situações irregulares",
+    title: "Revisão de Benefícios",
+    description: "Análise e revisão de benefícios já concedidos.",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72"
   },
 ];
 
 export const Services = () => {
   return (
-    <section className="py-20 bg-accent">
+    <section className="py-20 bg-gray-50" id="servicos">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
-          Nossos Serviços
-        </h2>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold mb-6 text-primary">
+            Nossos Serviços
+          </h2>
+          <p className="text-lg text-gray-600">
+            A Albuquerque Gestão Jurídica é especializada em consultoria jurídica previdenciária, 
+            atuando de forma personalizada e estratégica para auxiliar seus clientes a compreender 
+            e assegurar seus direitos no âmbito da previdência social.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="service-card relative overflow-hidden group"
-              style={{ 
-                backgroundImage: `linear-gradient(rgba(26, 31, 44, 0.9), rgba(26, 31, 44, 0.95)), url(${service.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
+              className="service-card bg-white relative overflow-hidden group"
             >
-              <service.icon className="w-12 h-12 text-secondary mb-4" />
-              <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
-              <p className="text-gray-300">{service.description}</p>
+              <div className="absolute inset-0 opacity-10 transition-opacity group-hover:opacity-20">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <service.icon className="w-12 h-12 text-primary mb-4" />
+                <h3 className="text-xl font-bold mb-2 text-primary">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
             </div>
           ))}
         </div>
