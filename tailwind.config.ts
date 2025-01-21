@@ -18,6 +18,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
+        display: ['Playfair Display', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -25,28 +30,24 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1A1F2C",
+          DEFAULT: "#1a2942",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#C5A572",
-          foreground: "#1A1F2C",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#4a5568",
+          foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#141824",
-          foreground: "#FFFFFF",
+          DEFAULT: "#e2e8f0",
+          foreground: "#1a2942",
+        },
+        muted: {
+          DEFAULT: "#f7fafc",
+          foreground: "#4a5568",
         },
         card: {
-          DEFAULT: "#1A1F2C",
-          foreground: "#FFFFFF",
+          DEFAULT: "#ffffff",
+          foreground: "#1a2942",
         },
       },
       borderRadius: {
