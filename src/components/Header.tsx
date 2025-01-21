@@ -15,7 +15,7 @@ export const Header = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to="#sobre-nos">
+                <Link to="/sobre-nos">
                   <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-white hover:text-secondary")}>
                     Sobre Nós
                   </NavigationMenuLink>
