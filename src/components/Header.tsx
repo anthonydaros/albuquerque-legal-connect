@@ -2,15 +2,60 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 import { cn } from "@/lib/utils";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
-import { Scale } from "lucide-react";
+import { Scale, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
     }
   };
+
+  const MenuItems = () => (
+    <>
+      <NavigationMenuItem>
+        <Link to="/">
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+            Home
+          </NavigationMenuLink>
+        </Link>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <Link to="/sobre-nos">
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+            Sobre Nós
+          </NavigationMenuLink>
+        </Link>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <button onClick={() => scrollToSection('servicos')}>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+            Serviços
+          </NavigationMenuLink>
+        </button>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <button onClick={() => scrollToSection('faq')}>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+            FAQ
+          </NavigationMenuLink>
+        </button>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <button onClick={() => scrollToSection('contato')}>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
+            Contato
+          </NavigationMenuLink>
+        </button>
+      </NavigationMenuItem>
+    </>
+  );
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
@@ -21,45 +66,30 @@ export const Header = () => {
             <span>Albuquerque</span>
           </Link>
           
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link to="/">
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-                    Home
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/sobre-nos">
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-                    Sobre Nós
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <button onClick={() => scrollToSection('servicos')}>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-                    Serviços
-                  </NavigationMenuLink>
+          {/* Desktop Menu */}
+          <div className="hidden md:block">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <MenuItems />
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="p-2">
+                  <Menu className="h-6 w-6" />
                 </button>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <button onClick={() => scrollToSection('faq')}>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-                    FAQ
-                  </NavigationMenuLink>
-                </button>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <button onClick={() => scrollToSection('contato')}>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-primary hover:text-white hover:bg-primary transition-colors")}>
-                    Contato
-                  </NavigationMenuLink>
-                </button>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-4">
+                  <MenuItems />
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
