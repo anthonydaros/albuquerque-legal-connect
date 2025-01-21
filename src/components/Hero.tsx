@@ -6,7 +6,7 @@ export const Hero = () => {
     <div className="relative min-h-screen flex items-center justify-center text-white">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1433832597046-4f10e10ac764"
+          src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952"
           alt="Background"
           className="w-full h-full object-cover"
         />

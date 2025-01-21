@@ -5,16 +5,19 @@ const services = [
     icon: Shield,
     title: "Consultoria Jurídica",
     description: "Orientação especializada em direito previdenciário",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
   },
   {
     icon: Calculator,
     title: "Cálculos e Revisões",
     description: "Análise detalhada de benefícios e contribuições",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
   },
   {
     icon: FileText,
     title: "Requerimentos INSS",
     description: "Auxílio completo em processos administrativos",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
   },
   {
     icon: Users,
@@ -42,7 +45,15 @@ export const Services = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="service-card">
+            <div 
+              key={index} 
+              className="service-card relative overflow-hidden group"
+              style={{ 
+                backgroundImage: `linear-gradient(rgba(26, 31, 44, 0.9), rgba(26, 31, 44, 0.95)), url(${service.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
               <service.icon className="w-12 h-12 text-secondary mb-4" />
               <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
               <p className="text-gray-300">{service.description}</p>
