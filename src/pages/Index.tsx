@@ -1,15 +1,19 @@
 import { Hero } from "@/components/Hero";
+import { Header } from "@/components/Header";
 import { Services } from "@/components/Services";
+import { Stats } from "@/components/Stats";
+import { Testimonials } from "@/components/Testimonials";
 import { ContactForm } from "@/components/ContactForm";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-primary">
+      <Header />
       <Hero />
+      <Stats />
       <Services />
+      <Testimonials />
       <ContactForm />
-      <WhatsAppButton />
     </div>
   );
 };
