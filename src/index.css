@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -52,20 +52,4 @@
 
 .fade-in {
   @apply opacity-0 animate-fade-in;
-}
-
-.elegant-section {
-  @apply py-20 bg-white text-primary;
-}
-
-.section-title {
-  @apply text-4xl font-display font-bold text-center mb-12 text-primary;
-}
-
-.content-text {
-  @apply text-lg font-sans text-secondary leading-relaxed;
-}
-
-.faq-item {
-  @apply bg-white shadow-sm rounded-lg p-6 mb-4 transition-all duration-300;
 }
